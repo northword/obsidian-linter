@@ -55,6 +55,8 @@ esbuild.build({
         'import {Setting} from \'obsidian\';': '',
         // remove the use of obsidian in settings helper to allow for dovs.js to run
         'import {MarkdownRenderer} from \'obsidian\';': '',
+        // remove `window` in the lang to allow for docs.js to run 
+        "const lang = window.localStorage.getItem('language');" : "const lang = 'en';",
       },
       delimiters: ['', ''],
     }),

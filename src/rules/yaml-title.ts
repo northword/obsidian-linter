@@ -5,6 +5,7 @@ import {escapeStringIfNecessaryAndPossible, formatYAML, initYAML} from '../utils
 import {ignoreListOfTypes, IgnoreTypes} from '../utils/ignore-types';
 import {escapeDollarSigns, getFirstHeaderOneText} from '../utils/regex';
 import {insert} from '../utils/strings';
+import {t} from '../lang'
 
 class YamlTitleOptions implements Options {
   @RuleBuilder.noSettingControl()
@@ -22,10 +23,10 @@ export default class YamlTitle extends RuleBuilder<YamlTitleOptions> {
     return YamlTitleOptions;
   }
   get name(): string {
-    return 'YAML Title';
+    return t('YAML Title');
   }
   get description(): string {
-    return 'Inserts the title of the file into the YAML frontmatter. Gets the title from the first H1 or filename if there is no H1.';
+    return t('Inserts the title of the file into the YAML frontmatter. Gets the title from the first H1 or filename if there is no H1.');
   }
   get type(): RuleType {
     return RuleType.YAML;
