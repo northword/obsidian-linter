@@ -44,7 +44,7 @@ export default {
     'plugin-load': '插件已加载',
     'plugin-unload': '插件 Unload',
     'folder-lint': 'Linting 目录 ',
-    'linter-run': 'linter 运行中',
+    'linter-run': 'linter 执行中',
     'paste-link-warning': '由于剪贴板内容为链接, 已中断对粘贴内容Lint, 以避免与其他插件发生冲突。',
     'see-console': '请在控制台 (Ctrl+Shift+I) 中查看详细信息.',
     'unknown-error': 'Lint 过程中发生了未知错误.',
@@ -53,7 +53,7 @@ export default {
     // rules-runner.ts
     'pre-rules': '常规规则之前的规则',
     'post-rules': '常规规则之后的规则',
-    'rule-running': '规则运行中',
+    'rule-running': '规则执行中',
     'custom-regex': '自定义正则',
     'running-custom-regex': '自定义正则运行中',
     'running-custom-lint-command': '自定义 Lint 命令运行中',
@@ -100,15 +100,15 @@ export default {
   'tabs': {
     'names': {
       // tab.ts
-      'general': '常规设置项',
-      'custom': '自定义设置项',
-      'yaml': 'YAML 设置项',
-      'heading': '标题设置项',
-      'content': '脚注设置项',
-      'footnote': '内容设置项',
-      'spacing': '间距设置项',
-      'paste': '粘贴设置项',
-      'debug': '调试设置项',
+      'general': '常规',
+      'custom': '自定义',
+      'yaml': 'YAML',
+      'heading': '标题',
+      'content': '脚注',
+      'footnote': '内容',
+      'spacing': '间距',
+      'paste': '粘贴',
+      'debug': '调试',
     },
     // tab-searcher.ts
     'default-search-bar-text': '搜索设置项',
@@ -159,8 +159,8 @@ export default {
         'description': '将允许服务记录的日志等级。默认是错误 (ERROR)。',
       },
       'linter-config': {
-        'name': 'Linter 配置',
-        'description': '设置页面加载时, Linter的 data.json 的内容',
+        'name': 'Linter 的配置',
+        'description': '截止至设置页面加载时, Linter 的配置文件 data.json 里的内容。新变动的设置项需要重新进入 Linter 设置页面才能加载。',
       },
       'log-collection': {
         'name': 'Lint 当前文件时收集日志 (包括由保存触发的 Lint)',
@@ -176,26 +176,26 @@ export default {
   'options': {
     'custom-command': {
       // custom-command-option.ts
-      'name': 'Custom Commands',
-      'description': 'Custom commands are Obsidian commands that get run after the linter is finished running its regular rules. This means that they do not run before the YAML timestamp logic runs, so they can cause YAML timestamp to be triggered on the next run of the linter. You may only select an Obsidian command once. **_Note that this currently only works on linting the current file._**',
-      'warning': 'When selecting an option, make sure to select the option either by using the mouse or by hitting the enter key. Other selection methods may not work and only selections of an actual Obsidian command or an empty string will be saved.',
+      'name': '自定义命令',
+      'description': '自定义命令是在 linter 运行完常规规则后运行 Obsidian 命令。这意味着它们在 “YAML 时间戳” 逻辑之后运行，所以它们可能导致 “YAML 时间戳” 被再次触发。你只能选择一个 Obsidian 命令一次。**_注意，目前只对 “Lint 当前文件” 有效。_**',
+      'warning': '当选择一个选项时, 请使用鼠标或回车键来选择该选项。其他选择方法可能不起作用, 只有选择了实际的 Obsidian 命令或空字符串才会被保存。',
 
-      'add-input-button-text': 'Add new command',
-      'command-search-placeholder-text': 'Obsidian command',
-      'move-up-tooltip': 'Move up',
-      'move-down-tooltip': 'Move down',
-      'delete-tooltip': 'Delete',
+      'add-input-button-text': '添加新命令',
+      'command-search-placeholder-text': 'Obsidian 命令',
+      'move-up-tooltip': '上移',
+      'move-down-tooltip': '下移',
+      'delete-tooltip': '删除',
     },
     'custom-replace': {
       // custom-replace-option.ts
-      'name': 'Custom Regex Replacement',
-      'description': 'Custom regex replacement can be used to replace anything that matches the find regex with the replacement value. The replace and find values will need to be valid regex values.',
-      'warning': 'Use this with caution if you do not know regex. Also, please make sure that you do not use lookbehinds in your regex on iOS mobile as that will cause linting to fail since that is not supported on that platform.',
-      'add-input-button-text': 'Add new regex replacement',
-      'regex-to-find-placeholder-text': 'regex to find',
-      'flags-placeholder-text': 'flags',
-      'regex-to-replace-placeholder-text': 'regex to replace',
-      'delete-tooltip': 'Delete',
+      'name': '自定义正则替换',
+      'description': '自定义正则替换可以替换任何与查找词条匹配的内容。替换值和被替换值均需是合法的正则表达式。',
+      'warning': '如果你不了解正则表达式, 请慎重使用本功能。另外， 在 iOS 手机上, 请确保不要在词条中使用 lookbehinds , 否则将导致 lint 失败 (iOS 平台不支持)。',
+      'add-input-button-text': '添加新的正则替换',
+      'regex-to-find-placeholder-text': '被替换值',
+      'flags-placeholder-text': '正则选项 (flags)',
+      'regex-to-replace-placeholder-text': '替换值',
+      'delete-tooltip': '删除',
     },
   },
 
@@ -217,7 +217,7 @@ export default {
     },
     // capitalize-headings.ts
     'capitalize-headings': {
-      'name': '标题大写',
+      'name': '标题大写化',
       'description': '标题字母应是大写的',
       'style': {
         'name': '风格',
@@ -239,7 +239,7 @@ export default {
     // compact-yaml.ts
     'compact-yaml': {
       'name': 'Compact YAML',
-      'description': 'Removes leading and trailing blank lines in the YAML front matter.',
+      'description': '移除 YAML 前言前后的空行',
       'inner-new-lines': {
         'name': 'Inner New Lines',
         'description': 'Remove new lines that are not at the start or the end of the YAML',
@@ -247,56 +247,56 @@ export default {
     },
     // consecutive-blank-lines.ts
     'consecutive-blank-lines': {
-      'name': 'Consecutive blank lines',
-      'description': 'There should be at most one consecutive blank line.',
+      'name': '连续空行',
+      'description': '最多只能有一个连续的空行，多个空行将被合并',
     },
     // convert-bullet-list-markers.ts
     'convert-bullet-list-markers': {
-      'name': 'Convert Bullet List Markers',
-      'description': 'Converts common bullet list marker symbols to markdown list markers.',
+      'name': '转换无序列表的标识符',
+      'description': '将常见的无序列表标识符转换为 Markdown 样式的标识符 `-`',
     },
     // convert-spaces-to-tabs.ts
     'convert-spaces-to-tabs': {
-      'name': 'Convert Spaces to Tabs',
-      'description': 'Converts leading spaces to tabs.',
+      'name': '将空格转换为制表符',
+      'description': '将文本前的空格转换为制表符',
       'tabsize': {
-        'name': 'Tabsize',
-        'description': 'Number of spaces that will be converted to a tab',
+        'name': '制表符长度',
+        'description': '将被转换为制表符的空格数',
       },
     },
     // emphasis-style.ts
     'emphasis-style': {
-      'name': 'Emphasis Style',
-      'description': 'Makes sure the emphasis style is consistent.',
+      'name': '强调样式',
+      'description': '统一强调样式的语法',
       'style': {
-        'name': 'Style',
-        'description': 'The style used to denote emphasized content',
+        'name': '样式',
+        'description': '用来表示强调内容的样式',
       },
     },
     // empty-line-around-blockquotes.ts
     'empty-line-around-blockquotes': {
-      'name': 'Empty Line Around Blockquotes',
+      'name': '引用块周围空行',
       'description': 'Ensures that there is an empty line around blockquotes unless they start or end a document. **Note that an empty line is either one less level of nesting for blockquotes or a newline character.**',
     },
     // empty-line-around-code-fences.ts
     'empty-line-around-code-fences': {
-      'name': 'Empty Line Around Code Fences',
+      'name': '代码块周围空行',
       'description': 'Ensures that there is an empty line around code fences unless they start or end a document.',
     },
     // empty-line-around-math-block.ts
     'empty-line-around-math-blocks': {
-      'name': 'Empty Line Around Math Blocks',
+      'name': '数学块周围空行',
       'description': 'Ensures that there is an empty line around math blocks using `Number of Dollar Signs to Indicate a Math Block` to determine how many dollar signs indicates a math block for single-line math.',
     },
     // empty-line-around-tables.ts
     'empty-line-around-tables': {
-      'name': 'Empty Line Around Tables',
+      'name': '表格周围空行',
       'description': 'Ensures that there is an empty line around github flavored tables unless they start or end a document.',
     },
     // escape-yaml-special-characters.ts
     'escape-yaml-special-characters': {
-      'name': 'Escape YAML Special Characters',
-      'description': 'Escapes colons with a space after them (: ), single quotes (\'), and double quotes (") in YAML.',
+      'name': '避免 YAML 特殊字符',
+      'description': '在 YAML 中避免带空格的冒号 (`: `)、单引号 (`\'`) 和双引号 (`"`)',
       'try-to-escape-single-line-arrays': {
         'name': 'Try to Escape Single Line Arrays',
         'description': 'Tries to escape array values assuming that an array starts with "[", ends with "]", and has items that are delimited by ",".',
@@ -569,7 +569,7 @@ export default {
     },
     // strong-style.ts
     'strong-style': {
-      'name': 'Strong Style',
+      'name': '粗体样式',
       'description': 'Makes sure the strong style is consistent.',
       'style': {
         'name': 'Style',
@@ -592,7 +592,7 @@ export default {
     },
     // unordered-list-style.ts
     'unordered-list-style': {
-      'name': 'Unordered List Style',
+      'name': '无序列表样式',
       'description': 'Makes sure that unordered lists follow the style specified.',
       'list-style': {
         'name': 'List item style',
@@ -601,7 +601,7 @@ export default {
     },
     // yaml-key-sort.ts
     'yaml-key-sort': {
-      'name': 'YAML Key Sort',
+      'name': 'YAML 键排序',
       'description': 'Sorts the YAML keys based on the order and priority specified. Note: may remove blank lines as well.',
       'yaml-key-priority-sort-order': {
         'name': 'YAML Key Priority Sort Order',
@@ -618,7 +618,7 @@ export default {
     },
     // yaml-timestamp.ts
     'yaml-timestamp': {
-      'name': 'YAML Timestamp',
+      'name': 'YAML 时间戳',
       'description': 'Keep track of the date the file was last edited in the YAML front matter. Gets dates from file metadata.',
       'date-created': {
         'name': 'Date Created',
@@ -647,7 +647,7 @@ export default {
     },
     // yaml-title-alias.ts
     'yaml-title-alias': {
-      'name': 'YAML Title Alias',
+      'name': 'YAML 标题别名',
       'description': 'Inserts the title of the file into the YAML frontmatter\'s aliases section. Gets the title from the first H1 or filename.',
       'preserve-existing-alias-section-style': {
         'name': 'Preserve existing aliases section style',
@@ -664,7 +664,7 @@ export default {
     },
     // yaml-title.ts
     'yaml-title': {
-      'name': 'YAML Title',
+      'name': 'YAML 标题',
       'description': 'Inserts the title of the file into the YAML frontmatter. Gets the title from the first H1 or filename if there is no H1.',
       'title-key': {
         'name': 'Title Key',
@@ -691,9 +691,9 @@ export default {
     'Nothing': 'Nothing',
     'Remove hashtag': 'Remove hashtag',
     'Remove whole tag': 'Remove whole tag',
-    'asterisk': 'asterisk',
-    'underscore': 'underscore',
-    'consistent': 'consistent',
+    'asterisk': '星号 (*)',
+    'underscore': '下划线 (_)',
+    'consistent': '在文档中保持一致',
     '-': '-', // leave as is
     '*': '*', // leave as is
     '+': '+', // leave as is
