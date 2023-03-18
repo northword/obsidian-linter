@@ -7,7 +7,7 @@ import {parseTextToHTMLWithoutOuterParagraph} from 'src/ui/helpers';
 import {logsFromLastRun, setLogLevel} from 'src/utils/logger';
 import {getTextInLanguage, LanguageStringKey} from 'src/lang/helpers';
 
-const logLevels = Object.keys(log.levels) as LanguageStringKey[];
+const logLevels = Object.keys(log.levels) as string[];
 const logLevelInts = Object.values(log.levels);
 
 export class DebugTab extends Tab {
@@ -25,7 +25,7 @@ export class DebugTab extends Tab {
         .setDesc(settingDesc)
         .addDropdown((dropdown) => {
           logLevels.forEach((logLevel, index) => {
-            dropdown.addOption(logLevelInts[index], getTextInLanguage(logLevel));
+            dropdown.addOption(logLevelInts[index], getTextInLanguage('enums.' + logLevel as LanguageStringKey));
           });
           // set value only takes strings so I have to cast the log level to type string in order to get it to work properly
           dropdown.setValue(this.plugin.settings.logLevel + '');
@@ -72,7 +72,7 @@ export class DebugTab extends Tab {
     tempDiv = this.contentEl.createDiv();
     settingName = getTextInLanguage('tabs.debug.linter-logs.name');
     settingDesc = getTextInLanguage('tabs.debug.linter-logs.description');
-    const logDisplay = new TextBoxFull(tempDiv, settingName, settingDesc);
+    const logDisplay = new TextBoxFull(tempDiv, settingName, '');
     logDisplay.inputEl.setText(logsFromLastRun.join('\n'));
 
     parseTextToHTMLWithoutOuterParagraph(settingDesc, logDisplay.descEl);
